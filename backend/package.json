@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "node ./build/index.js",
+    "dev": "nodemon --ignore 'media/' ./src/index.ts",
+    "build": "tsc -p ."
+  },
+  "devDependencies": {
+    "@types/hapi": "^18.0.3",
+    "@types/node": "^14.11.8"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "hapi": "^18.1.0",
+    "node-fetch": "^2.6.1",
+    "xml2json": "^0.12.0"
+  }
+}
