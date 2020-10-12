@@ -25,7 +25,7 @@ this application was build with [HapiJS](https://hapi.dev) and [ReactJS](https:/
 - run `yarn install`
 - change all important config in `.env`
 - run for development `yarn dev`
-- run for production `yarn build` & `yarn start`;
+- run for production `yarn build` & `yarn production`;
 
 ### Frontend Setup
 
