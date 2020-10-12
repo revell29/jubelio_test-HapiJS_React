@@ -62,8 +62,7 @@ class ProductStore {
     try {
       this.isLoading = true;
       await updateProductById(newData, id);
-      const index = this.data.findIndex((h) => h.id === newData.id);
-      this.data[index] = newData;
+      this.fetchData();
       this.isLoading = false;
     } catch (error) {
       this.isLoading = false;

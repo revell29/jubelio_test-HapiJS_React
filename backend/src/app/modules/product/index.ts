@@ -61,7 +61,7 @@ class ProductController {
       const newData = await updateProduct(result, request.params.id);
 
       return h
-        .response({ message: "Product has been updated.", data: newData })
+        .response({ message: "Product has been updated.", data: result })
         .code(200);
     } catch (err) {
       if (err.isJoi && Array.isArray(err.details) && err.details.length > 0) {

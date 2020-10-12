@@ -26,6 +26,7 @@ export default [
         output: "stream",
         parse: true,
         allow: "multipart/form-data",
+        multipart: true, // <-- this fixed the media type error
       },
       validate: {
         failAction: errorHandler,

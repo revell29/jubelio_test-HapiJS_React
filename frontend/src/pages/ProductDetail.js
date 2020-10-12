@@ -24,20 +24,23 @@ const ProductDetail = observer((props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    await productStore
-      .updateProduct(form, id)
-      .then((res) => {
-        toast({
-          title: "Success",
-          description: res.message,
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-      })
-      .catch(() => {
-        console.log(productStore.error);
-      });
+    await productStore.updateProduct(form, id);
+
+    if (productStore.error) {
+      console.log(productStore.error);
+    }
+
+    toast({
+      title: "Success",
+      description: "Product has been updated.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+
+    props.history.replace({
+      pathname: `/`,
+    });
   };
 
   useEffect(() => {
@@ -59,14 +62,20 @@ const ProductDetail = observer((props) => {
             spacing={10}
           >
             <Image
-              src="https://cynthiarenee.com/wp-content/uploads/2018/11/placeholder-product-image-300x300.png"
-              alt="Segun Adebayo"
-              display="block"
-              align="center"
+              src={
+                productStore.detail["image"]
+                  ? `${process.env.REACT_APP_IMAGE_URL}/${productStore.detail["image"]}`
+                  : "https://cynthiarenee.com/wp-content/uploads/2018/11/placeholder-product-image-300x300.png"
+              }
+              alt={productStore.detail["prodName"]}
+              objectFit="cover"
             />
           </Stack>
           <Box>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form
+              onSubmit={(e) => handleSubmit(e)}
+              encType="multipart/form-data"
+            >
               <FormControl mb={4} isRequired>
                 <FormLabel htmlFor="sku">SKU</FormLabel>
                 <Input
@@ -95,8 +104,8 @@ const ProductDetail = observer((props) => {
                 />
               </FormControl>
 
-              <FormControl mb={4} isRequired>
-                <FormLabel htmlFor="prodName">Image</FormLabel>
+              <FormControl mb={4}>
+                <FormLabel htmlFor="Image">Image</FormLabel>
                 <Input
                   type="file"
                   id="image"
@@ -106,7 +115,7 @@ const ProductDetail = observer((props) => {
               </FormControl>
 
               <FormControl mb={4} isRequired>
-                <FormLabel htmlFor="prodName">Price</FormLabel>
+                <FormLabel htmlFor="Price">Price</FormLabel>
                 <Input
                   type="text"
                   id="price"

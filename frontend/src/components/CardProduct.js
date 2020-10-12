@@ -60,8 +60,13 @@ export const CardProduct = observer(({ data }) => {
           shadow="md"
         >
           <Image
-            src="https://cynthiarenee.com/wp-content/uploads/2018/11/placeholder-product-image-300x300.png"
-            alt="Segun Adebayo"
+            src={
+              value.image
+                ? `${process.env.REACT_APP_IMAGE_URL}/${value.image}`
+                : "https://cynthiarenee.com/wp-content/uploads/2018/11/placeholder-product-image-300x300.png"
+            }
+            alt={value.prodName}
+            objectFit="cover"
           />
           <Box p="6">
             <Box

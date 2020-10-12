@@ -34,6 +34,17 @@ const serverInit = async (): Promise<Hapi.Server> => {
 
   // @ts-ignore
   server.register(Inert);
+  server.route({
+    method: "GET",
+    path: "/public/{path*}",
+    handler: {
+      directory: {
+        path: path.join(__dirname, "../../public"),
+        index: false,
+        listing: false,
+      },
+    },
+  });
   server.route(serverRoutes);
 
   return server;
