@@ -33,3 +33,7 @@ this application was build with [HapiJS](https://hapi.dev) and [ReactJS](https:/
 - change all important config in `.env`
 - run `yarn start`
 - for production `yarn build`;
+
+### Import data product from API
+
+- access endpoint `/api/elevenia/getProduct` and wait until product imported.
