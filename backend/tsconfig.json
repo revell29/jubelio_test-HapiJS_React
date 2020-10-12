@@ -1,16 +1,31 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "target": "ES2018",
+    "target": "es6",
     "module": "commonjs",
-    "sourceMap": false,
-    "declaration": true,
-    "resolveJsonModule": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "noImplicitAny": false,
+    "types": ["node"],
+    "sourceMap": true,
     "outDir": "./build",
-    "rootDir": "./src"
-  }
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@database/*": ["src/database/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@repository/*": ["src/app/repository/*"],
+      "@route/*": ["src/routes/*"],
+      "@utils/*": ["src/server/utils/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "src/**/*.js"]
 }
