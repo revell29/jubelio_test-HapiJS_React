@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "lib": ["es5", "es6"],
     "module": "commonjs",
     "strict": true,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "removeComments": true,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "preserveConstEnums": true,
@@ -13,11 +15,10 @@
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "types": ["node"],
+    "types": ["reflect-metadata", "node"],
     "sourceMap": true,
     "outDir": "./build",
-    "rootDir": "./src",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@database/*": ["src/database/*"],
       "@modules/*": ["src/app/modules/*"],

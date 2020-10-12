@@ -1,0 +1,21 @@
+version: "3"
+services:
+  jubelioDatabase:
+    container_name: jubelioDatabase
+    image: postgres:12-alpine
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASS}"
+      POSTGRES_DB: "${DB_DATABASE}"
+    volumes:
+      - ./docker-volumes/postgresql:/var/lib/postgresql
+  adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8080:8080
+networks:
+  planet-network:
+    driver: bridge
